@@ -14,7 +14,7 @@ This is an pytorch-version implementation of [Emergence of Locomotion Behaviours
 ### Train your models
 ```bash
 cd /root-of-this-code/
-python main.py
+python train_network.py
 
 ```
 You could also try some other mujoco's environment. This code has already pre-trained one mujoco environments: `Walker2d-v1`. You could try them by yourself!
