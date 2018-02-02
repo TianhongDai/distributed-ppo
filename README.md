@@ -17,7 +17,7 @@ cd /root-of-this-code/
 python train_network.py
 
 ```
-You could also try some other mujoco's environment. This code has already pre-trained one mujoco environments: `Walker2d-v1`. You could try them by yourself!
+You could also try some other mujoco's environment. This code has already pre-trained one mujoco environment: `Walker2d-v1`. You could try it by yourself!
 
 ### Test your models:
 ```bash
@@ -25,6 +25,8 @@ cd /root-of-this-code/
 python demo.py
 
 ```
+## Results
+![img](https://github.com/TianhongDai/Distributed_PPO/blob/master/results/training_plot.png)
 
 ## Acknowledgement
 - [Alexis David Jacq's DPPO](https://github.com/alexis-jacq/Pytorch-DPPO)
