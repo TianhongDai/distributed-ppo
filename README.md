@@ -7,24 +7,20 @@ This is an pytorch-version implementation of [Emergence of Locomotion Behaviours
 - python 3.5.2
 - openai gym
 - mujoco-python
-- pytorch(**Please use the CPU version!!! --- I will solve the problem in the GPU version later**)
+- pytorch(***Please use the CPU version!!! --- I will solve the problem in the GPU version later***)
 - [pyro](http://pyro.ai/)
 
 ## Instruction to run the code
 ### Train your models
-```bash
-cd /root-of-this-code/
-python train_network.py
+    cd /root-of-this-code/
+    python train_network.py
 
-```
 You could also try other mujoco's environments. This code has already pre-trained one mujoco environment: `Walker2d-v1`. You could try it by yourself on your favourite task!
 
 ### Test your models:
-```bash
-cd /root-of-this-code/
-python demo.py
+    cd /root-of-this-code/
+    python demo.py
 
-```
 ## Results
 ### Training Curve
 ![img](https://github.com/TianhongDai/Distributed_PPO/blob/master/results/training_plot.png)
