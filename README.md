@@ -7,7 +7,7 @@ This is an pytorch-version implementation of [Emergence of Locomotion Behaviours
 - python 3.5.2
 - openai gym
 - mujoco-python
-- pytorch
+- pytorch(*Please use the CPU version!!!---I will solve the problem in the GPU version later*)
 - [pyro](http://pyro.ai/)
 
 ## Instruction to run the code
@@ -26,7 +26,10 @@ python demo.py
 
 ```
 ## Results
+### Training Curve
 ![img](https://github.com/TianhongDai/Distributed_PPO/blob/master/results/training_plot.png)
+### Demo: Walker2d-v1
+![img](https://github.com/TianhongDai/Distributed_PPO/blob/master/results/walker2d.png)
 
 ## Acknowledgement
 - [Alexis David Jacq's DPPO](https://github.com/alexis-jacq/Pytorch-DPPO)

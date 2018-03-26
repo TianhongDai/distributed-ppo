@@ -2,7 +2,7 @@ import torch
 import time
 from torch.autograd import Variable
 
-def chief_worker(num_workers, traffic_signal, critic_counter, actor_counter, critic_shared_model, actor_shared_model, 
+def chief_worker(num_workers, traffic_signal, critic_counter, actor_counter, critic_shared_model, actor_shared_model, \
     critic_shared_grad_buffer, actor_shared_grad_buffer, critic_optimizer, actor_optimizer, shared_reward, shared_obs_state, update_step, name):
     num_iteration = 1
     while True:

@@ -21,8 +21,8 @@ class dppo_workers:
         self.critic_net = models.Critic_Network(num_inputs)
     
     # start to define the training function...
-    def train_network(self, traffic_signal, critic_counter, actor_counter, shared_critic_model, shared_actor_model, 
-                                        shared_obs_state, critic_shared_grad_buffer, actor_shared_grad_buffer, reward_buffer):
+    def train_network(self, traffic_signal, critic_counter, actor_counter, shared_critic_model, shared_actor_model, \
+                                shared_obs_state, critic_shared_grad_buffer, actor_shared_grad_buffer, reward_buffer):
 
         # update the parameters....
         self.actor_net.load_state_dict(shared_actor_model.state_dict())
@@ -56,13 +56,13 @@ class dppo_workers:
                     state = state_
             # start to calculate the gradients for this time sequence...
             reward_buffer.add(reward_sum / self.args.collection_length)
-            critic_loss, actor_loss = self.update_network(brain_memory, critic_shared_grad_buffer, actor_shared_grad_buffer, 
-                                                shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal)
+            critic_loss, actor_loss = self.update_network(brain_memory, critic_shared_grad_buffer, actor_shared_grad_buffer, \
+                                            shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal)
 
 
     # calculate the gradients based on the information be collected...
-    def update_network(self, brain_memory, critic_shared_grad_buffer, actor_shared_grad_buffer, 
-                                                shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal):
+    def update_network(self, brain_memory, critic_shared_grad_buffer, actor_shared_grad_buffer, \
+                             shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal):
         # process the stored information
         state_batch = torch.Tensor(np.array([element[0] for element in brain_memory]))
         reward_batch = torch.Tensor(np.array([element[1] for element in brain_memory]))
@@ -73,19 +73,19 @@ class dppo_workers:
         state_batch_tensor = Variable(state_batch)
         actions_batch_tensor = Variable(actions_batch)
         # calculate the discounted reward...
-        returns, advantages, old_action_prob = self.calculate_discounted_reward(state_batch_tensor, 
-                                        done_batch, reward_batch, actions_batch_tensor)
+        returns, advantages, old_action_prob = self.calculate_discounted_reward(state_batch_tensor, \
+                                                            done_batch, reward_batch, actions_batch_tensor)
 
         # calculate the gradients...
-        critic_loss, actor_loss = self.calculate_the_gradients(state_batch_tensor, actions_batch_tensor, 
-                                    returns, advantages, old_action_prob, critic_shared_grad_buffer, actor_shared_grad_buffer, 
-                                    shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal)
+        critic_loss, actor_loss = self.calculate_the_gradients(state_batch_tensor, actions_batch_tensor, \
+                                returns, advantages, old_action_prob, critic_shared_grad_buffer, actor_shared_grad_buffer, \
+                                shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal)
         
         return critic_loss.data.cpu().numpy()[0], actor_loss.data.cpu().numpy()[0]
 
     # calculate the gradients...
-    def calculate_the_gradients(self, state_batch_tensor, actions_batch, returns, advantages, old_action_prob, critic_shared_grad_buffer, 
-                        actor_shared_grad_buffer, shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal):
+    def calculate_the_gradients(self, state_batch_tensor, actions_batch, returns, advantages, old_action_prob, critic_shared_grad_buffer, \
+                            actor_shared_grad_buffer, shared_critic_model, shared_actor_model, critic_counter, actor_counter, traffic_signal):
 
         # put the tensors into the Variable...
         returns = Variable(returns)
@@ -227,15 +227,4 @@ class dppo_workers:
         x = np.clip(x, -5.0, 5.0)
 
         return x
-
-
-
-
-        
-
-
-
-
-
-
 
