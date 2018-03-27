@@ -7,7 +7,7 @@ This is an pytorch-version implementation of [Emergence of Locomotion Behaviours
 - python 3.5.2
 - openai gym
 - mujoco-python
-- pytorch(***Please use the CPU version!!! --- I will solve the problem in the GPU version later***)
+- pytorc-cpu(***Please use the CPU(None-CUDA) version!!! --- I will solve the problem in the GPU(CUDA) version later***)
 - [pyro](http://pyro.ai/)
 
 ## Instruction to run the code
