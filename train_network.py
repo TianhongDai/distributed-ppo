@@ -7,8 +7,8 @@ import gym
 import mujoco_py
 import models 
 from chief import chief_worker  
-
-    
+import os 
+os.environ['OMP_NUM_THREADS'] = '1'
 
 # start the main function...
 if __name__ == '__main__':
